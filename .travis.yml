@@ -1,0 +1,16 @@
+language: node_js
+script: npm run-script test-travis
+node_js:
+- '0.10'
+- '0.11'
+- '0.12'
+- iojs
+sudo: false
+after_script: npm install coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls
+deploy:
+  provider: npm
+  email: tituswormer@gmail.com
+  api_key:
+    secure: qYOgHwtOXRh3ibCJlkI79uKVELmpl79dNQkO1cECPx3RG0VJdigHm1ogHGm9aByYuVLj9v250ndWk/6hQSdnPuPEu0gb0LUIL6IpmhelSjtMDbb4ziD2Au+PeF1eDR1IpeVLEb59GNi31KiAD6ZsGjUaBVYo8u1yiMFfxMZfqsG9TQvkC4nEfgyo2fWsIK+CvrsyFMq7p+rNfn3ntWlrr/M1j+JQnJ7pHBEzdEhHXleMERYeA4CDTGPzSmcSJr9tmZyk9e5EJpfU90Utw3jSYlKQXC2GqtnVaP9XDdwEE9eUdpldWjSeucQhc8dpvJR3zZwz+rO3TpsTvhC9fmpbAeyG8rQv5EBn4wjsY5oV9Ge1m8eLhW/Djy54CpkFd8tcsUOXganWJzsJVtdctddzt2LeaHV1RbMDlFGdEjF4DoRIQbMdbOEh2aZ09GvxIPtMUNG2FXlgxlgm1+qcBPKC6I1fq062cGEVRJECVRY7+pgutxSR6ixCbAIFN0MGaaPhbvvJjM/J6QKJiWxmyc9ci8FNea+eZad3E6S6Q8ibT7NHR4xdd753FQkCHK4Pc1xoMzAQWiSDp4eSa+5h5cholWLQhGlE45iqK3mJm0Ft/x+/cV6aEBxPvvo0pgTzcSVUzx0T5EXGSKgJYJzwZ072URgCLXXRfh96vLl38orA6A4=
+  on:
+    repo: wooorm/mdast-message-sort
