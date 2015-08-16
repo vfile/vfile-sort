@@ -1,18 +1,19 @@
 {
-  "name": "mdast-message-sort",
+  "name": "vfile-sort",
   "version": "0.1.0",
-  "description": "Sort mdast messages by line/column",
+  "description": "Sort VFile messages by line/column",
   "license": "MIT",
   "keywords": [
-    "mdast",
-    "markdown",
+    "vfile",
     "node",
     "sort",
     "message",
     "warning",
-    "error"
+    "error",
+    "retext",
+    "mdast"
   ],
-  "repository": "wooorm/mdast-message-sort.git",
+  "repository": "wooorm/vfile-sort",
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "files": [
     "index.js"
@@ -28,7 +29,8 @@
     "mdast-github": "^0.3.0",
     "mdast-lint": "^0.4.0",
     "mdast-yaml-config": "^1.0.0",
-    "mocha": "^2.0.0"
+    "mocha": "^2.0.0",
+    "vfile": "^1.0.0"
   },
   "scripts": {
     "test-api": "mocha --check-leaks test.js",
@@ -39,8 +41,8 @@
     "lint-style": "jscs --reporter inline .",
     "lint": "npm run lint-api && npm run lint-style",
     "make": "npm run lint && npm run test-coverage",
-    "bundle": "browserify index.js --no-builtins -s mdastMessageSort > mdast-message-sort.js",
-    "postbundle": "esmangle mdast-message-sort.js > mdast-message-sort.min.js",
+    "bundle": "browserify index.js --no-builtins -s vfileSort > vfile-sort.js",
+    "postbundle": "esmangle vfile-sort.js > vfile-sort.min.js",
     "build-md": "mdast . --quiet",
     "build": "npm run bundle && npm run build-md"
   }

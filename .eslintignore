@@ -2,5 +2,5 @@ build/
 components/
 coverage/
 build.js
-mdast-message-sort.js
-mdast-message-sort.min.js
+vfile-sort.js
+vfile-sort.min.js

@@ -1,72 +1,56 @@
-# mdast-message-sort [![Build Status](https://img.shields.io/travis/wooorm/mdast-mdast-message-sort.svg)](https://travis-ci.org/wooorm/mdast-mdast-message-sort) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/mdast-mdast-message-sort.svg)](https://codecov.io/github/wooorm/mdast-mdast-message-sort)
+# vfile-sort [![Build Status](https://img.shields.io/travis/wooorm/vfile-sort.svg)](https://travis-ci.org/wooorm/vfile-sort) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/vfile-sort.svg)](https://codecov.io/github/wooorm/vfile-sort)
 
-[**mdast**](https://github.com/wooorm/mdast) plug-in to sort messages by
-line/column (ascending).
+Sorts [`VFile`](https://github.com/wooorm/vfile) [`messages`](https://github.com/wooorm/vfile#vfilemessages).
 
 ## Installation
 
 [npm](https://docs.npmjs.com/cli/install):
 
 ```bash
-npm install mdast-message-sort
+npm install vfile-sort
 ```
 
-**mdast-message-sort** is also available for [bower](http://bower.io/#install-packages),
+**vfile-sort** is also available for [bower](http://bower.io/#install-packages),
 [component](https://github.com/componentjs/component), and
 [duo](http://duojs.org/#getting-started), and as an AMD, CommonJS, and globals
-module, [uncompressed](mdast-message-sort.js) and
-[compressed](mdast-message-sort.min.js).
+module, [uncompressed](vfile-sort.js) and
+[compressed](vfile-sort.min.js).
 
 ## Usage
 
 ```js
-/*
- * Dependencies.
- */
+var vfile = require('vfile');
+var sort = require('vfile-sort');
 
-var mdast = require('mdast');
-var sort = require('mdast-message-sort');
+var file = vfile();
 
-/*
- * Example plug-in which warns.
- */
-
-function warnings() {
-    return function (ast, file) {
-        file.warn('Error!', ast.children[1]);
-        file.warn('Another Error!', ast.children[0]);
-    };
-}
-
-/*
- * Process.
- */
-
-mdast.use(warnings).use(sort).process(`# foo
-
-*   bar.
-`, function (err, output, file) {
-    console.log(file.messages.map(String));
-    /*
-     * [
-     *   '1:1-1:6: Another Error!',
-     *   '3:1-3:9: Error!'
-     * ]
-     */
+file.warn('Error!', {
+    'line': 3,
+    'column': 1
 });
-```
 
-## CLI
+file.warn('Another!', {
+    'line': 2,
+    'column': 2
+});
 
-```bash
-mdast [options] file|dir ... -u mdast-message-sort
+sort(file);
+
+console.log(file.messages.map(String));
+/*
+ * [
+ *   '2:2: Another!',
+ *   '3:1: Error!'
+ * ]
+ */
 ```
 
 ## API
 
-### [mdast](https://github.com/wooorm/mdast#api).[use](https://github.com/wooorm/mdast#mdastuseplugin-options)(sort)
+### sort(vfile)
 
-Sorts messages.
+Sorts [`messages`](https://github.com/wooorm/vfile#vfilemessages) in the given
+[`VFile`](https://github.com/wooorm/vfile).
 
 ## License
 

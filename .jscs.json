@@ -5,8 +5,8 @@
     "coverage/",
     "node_modules/",
     "build.js",
-    "mdast-message-sort.js",
-    "mdast-message-sort.min.js"
+    "vfile-sort.js",
+    "vfile-sort.min.js"
   ],
   "jsDoc": {
     "checkAnnotations": "jsdoc3",

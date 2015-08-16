@@ -1,18 +1,19 @@
 {
-  "name": "mdast-message-sort",
+  "name": "vfile-sort",
   "version": "0.1.0",
-  "description": "Sort mdast messages by line/column",
+  "description": "Sort VFile messages by line/column",
   "license": "MIT",
   "keywords": [
-    "mdast",
-    "markdown",
+    "vfile",
     "node",
     "sort",
     "message",
     "warning",
-    "error"
+    "error",
+    "retext",
+    "mdast"
   ],
-  "repository": "wooorm/mdast-message-sort",
+  "repository": "wooorm/vfile-sort",
   "scripts": [
     "index.js"
   ]
