@@ -1,6 +1,7 @@
 /**
  * @author Titus Wormer
- * @copyright 2015 Titus Wormer. All rights reserved.
+ * @copyright 2015 Titus Wormer
+ * @license MIT
  * @module mdast-message-sort
  * @fileoverview mdast plug-in to sort messages by line/column.
  */
@@ -11,10 +12,10 @@
  * Sort all `file`s messages by line/column.
  *
  * @private
- * @param {Node} ast - Root node.
+ * @param {Node} node - Root node.
  * @param {File} file - Virtual file.
  */
-function transformer(ast, file) {
+function transformer(node, file) {
     file.messages.sort(function (a, b) {
         return a.line === undefined || a.line === null ?
             -1 :

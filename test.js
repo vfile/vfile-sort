@@ -59,7 +59,7 @@ function warn() {
 
 describe('mdast-message-sort', function () {
     it('should work', function (done) {
-        mdast.use(warn).use(sort).process(doc, function (err, res, file) {
+        mdast.use(warn).use(sort).process(doc, function (err, file) {
             var messages = file.messages.map(String);
 
             done(err);
