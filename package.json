@@ -1,6 +1,6 @@
 {
   "name": "vfile-sort",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Sort VFile messages by line/column",
   "license": "MIT",
   "keywords": [
