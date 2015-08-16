@@ -1,4 +1,4 @@
-# mdast-message-sort [![Build Status](https://img.shields.io/travis/wooorm/mdast-message-sort.svg?style=flat)](https://travis-ci.org/wooorm/mdast-message-sort) [![Coverage Status](https://img.shields.io/coveralls/wooorm/mdast-message-sort.svg?style=flat)](https://coveralls.io/r/wooorm/mdast-message-sort?branch=master)
+# mdast-message-sort [![Build Status](https://img.shields.io/travis/wooorm/mdast-mdast-message-sort.svg)](https://travis-ci.org/wooorm/mdast-mdast-message-sort) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/mdast-mdast-message-sort.svg)](https://codecov.io/github/wooorm/mdast-mdast-message-sort)
 
 [**mdast**](https://github.com/wooorm/mdast) plug-in to sort messages by
 line/column (ascending).
