@@ -1,20 +1,14 @@
-# vfile-sort [![Build Status](https://img.shields.io/travis/wooorm/vfile-sort.svg)](https://travis-ci.org/wooorm/vfile-sort) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/vfile-sort.svg)](https://codecov.io/github/wooorm/vfile-sort)
+# vfile-sort [![Build Status][travis-badge]][travis] [![Coverage Status][codecov-badge]][codecov]
 
-Sorts [`VFile`](https://github.com/wooorm/vfile) [`messages`](https://github.com/wooorm/vfile#vfilemessages).
+Sort [vfile][] messages by line/column.
 
 ## Installation
 
-[npm](https://docs.npmjs.com/cli/install):
+[npm][]:
 
 ```bash
 npm install vfile-sort
 ```
-
-**vfile-sort** is also available for [bower](http://bower.io/#install-packages),
-[component](https://github.com/componentjs/component), and
-[duo](http://duojs.org/#getting-started), and as an AMD, CommonJS, and globals
-module, [uncompressed](vfile-sort.js) and
-[compressed](vfile-sort.min.js).
 
 ## Usage
 
@@ -24,34 +18,39 @@ var sort = require('vfile-sort');
 
 var file = vfile();
 
-file.warn('Error!', {
-    'line': 3,
-    'column': 1
-});
-
-file.warn('Another!', {
-    'line': 2,
-    'column': 2
-});
+file.message('Error!', {line: 3, column: 1});
+file.message('Another!', {line: 2, column: 2});
 
 sort(file);
 
 console.log(file.messages.map(String));
-/*
- * [
- *   '2:2: Another!',
- *   '3:1: Error!'
- * ]
- */
+//=> ['2:2: Another!', '3:1: Error!']
 ```
 
 ## API
 
-### sort(vfile)
+### `sort(file)`
 
-Sorts [`messages`](https://github.com/wooorm/vfile#vfilemessages) in the given
-[`VFile`](https://github.com/wooorm/vfile).
+Sort messages in the given [vfile][].
 
 ## License
 
-[MIT](LICENSE) © [Titus Wormer](http://wooorm.com)
+[MIT][license] © [Titus Wormer][author]
+
+<!-- Definitions -->
+
+[travis-badge]: https://img.shields.io/travis/wooorm/vfile-sort.svg
+
+[travis]: https://travis-ci.org/wooorm/vfile-sort
+
+[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/vfile-sort.svg
+
+[codecov]: https://codecov.io/github/wooorm/vfile-sort
+
+[npm]: https://docs.npmjs.com/cli/install
+
+[license]: LICENSE
+
+[author]: http://wooorm.com
+
+[vfile]: https://github.com/wooorm/vfile

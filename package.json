@@ -1,49 +1,57 @@
 {
   "name": "vfile-sort",
   "version": "1.0.0",
-  "description": "Sort VFile messages by line/column",
+  "description": "Sort vfile messages by line/column",
   "license": "MIT",
   "keywords": [
     "vfile",
-    "node",
     "sort",
-    "message",
-    "warning",
-    "error",
-    "retext",
-    "mdast"
+    "message"
   ],
-  "repository": "wooorm/vfile-sort",
-  "author": "Titus Wormer <tituswormer@gmail.com>",
+  "repository": "https://github.com/wooorm/vfile-sort",
+  "bugs": "https://github.com/wooorm/vfile-sort/issues",
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
   "files": [
     "index.js"
   ],
+  "dependencies": {},
   "devDependencies": {
-    "browserify": "^11.0.0",
-    "eslint": "^1.0.0",
-    "esmangle": "^1.0.0",
-    "istanbul": "^0.3.0",
-    "jscs": "^2.0.0",
-    "jscs-jsdoc": "^1.0.0",
-    "mdast": "^1.0.0",
-    "mdast-github": "^0.3.0",
-    "mdast-lint": "^0.4.0",
-    "mdast-yaml-config": "^1.0.0",
-    "mocha": "^2.0.0",
-    "vfile": "^1.0.0"
+    "browserify": "^13.0.1",
+    "esmangle": "^1.0.1",
+    "nyc": "^8.1.0",
+    "remark-cli": "^2.0.0",
+    "remark-preset-wooorm": "^1.0.0",
+    "tape": "^4.0.0",
+    "vfile": "^2.0.0",
+    "xo": "^0.16.0"
   },
   "scripts": {
-    "test-api": "mocha --check-leaks test.js",
-    "test-coverage": "istanbul cover _mocha -- test.js",
-    "test-travis": "npm run test-coverage",
-    "test": "npm run test-api",
-    "lint-api": "eslint .",
-    "lint-style": "jscs --reporter inline .",
-    "lint": "npm run lint-api && npm run lint-style",
-    "make": "npm run lint && npm run test-coverage",
-    "bundle": "browserify index.js --no-builtins -s vfileSort > vfile-sort.js",
-    "postbundle": "esmangle vfile-sort.js > vfile-sort.min.js",
-    "build-md": "mdast . --quiet",
-    "build": "npm run bundle && npm run build-md"
+    "build-md": "remark . --quiet --frail",
+    "build-bundle": "browserify index.js --bare -s vfileSort > vfile-sort.js",
+    "build-mangle": "esmangle vfile-sort.js > vfile-sort.min.js",
+    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
+    "lint": "xo",
+    "test-api": "node test",
+    "test-coverage": "nyc --reporter lcov tape test.js",
+    "test": "npm run build && npm run lint && npm run test-coverage"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100
+  },
+  "xo": {
+    "space": true,
+    "ignores": [
+      "vfile-sort.js"
+    ]
+  },
+  "remarkConfig": {
+    "output": true,
+    "presets": "wooorm"
   }
 }

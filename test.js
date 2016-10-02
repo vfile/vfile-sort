@@ -1,65 +1,44 @@
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module
+ * @fileoverview Test suite for `vfile-sort`.
+ */
+
 'use strict';
 
-/* eslint-env mocha */
+/* Dependencies. */
+var test = require('tape');
+var vfile = require('vfile');
+var sort = require('./');
 
-/*
- * Dependencies.
- */
+/* Tests. */
+test('sort()', function (t) {
+  var file = vfile();
 
-var assert = require('assert');
-var VFile = require('vfile');
-var sort = require('./index.js');
+  file.message('Hotel', {column: 0});
+  file.message('Foxtrot');
+  file.message('Alpha', {line: 3});
+  file.message('Bravo', {line: 3, column: 1});
+  file.message('Charlie', {line: 3, column: 2});
+  file.message('Delta', {line: 0, column: 1});
+  file.message('Echo', {column: 1});
+  file.message('Golf', {line: 0});
 
-/*
- * Tests.
- */
+  t.deepEqual(
+    sort(file).messages.map(String),
+    [
+      '1:1: Hotel',
+      '1:1: Foxtrot',
+      '1:1: Golf',
+      '1:1: Delta',
+      '1:1: Echo',
+      '3:1: Alpha',
+      '3:1: Bravo',
+      '3:2: Charlie'
+    ]
+  );
 
-describe('vfile-sort', function () {
-    it('should work', function () {
-        var file = new VFile();
-
-        file.warn('Hotel', {
-            'column': 0
-        });
-
-        file.warn('Foxtrot');
-
-        file.warn('Alpha', {
-            'line': 3
-        });
-
-        file.warn('Bravo', {
-            'line': 3,
-            'column': 1
-        });
-
-        file.warn('Charlie', {
-            'line': 3,
-            'column': 2
-        });
-
-        file.warn('Delta', {
-            'line': 0,
-            'column': 1
-        });
-
-        file.warn('Echo', {
-            'column': 1
-        });
-
-        file.warn('Golf', {
-            'line': 0
-        });
-
-        assert.deepEqual(sort(file).messages.map(String), [
-            '1:1: Hotel',
-            '1:1: Foxtrot',
-            '1:1: Golf',
-            '1:1: Delta',
-            '1:1: Echo',
-            '3:1: Alpha',
-            '3:1: Bravo',
-            '3:2: Charlie'
-        ]);
-    });
+  t.end();
 });
