@@ -1,19 +1,9 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module
- * @fileoverview Test suite for `vfile-sort`.
- */
-
 'use strict';
 
-/* Dependencies. */
 var test = require('tape');
 var vfile = require('vfile');
 var sort = require('./');
 
-/* Tests. */
 test('sort()', function (t) {
   var file = vfile();
 

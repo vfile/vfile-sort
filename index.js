@@ -1,11 +1,3 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module vfile-sort
- * @fileoverview Sort vfile messages by line/column.
- */
-
 'use strict';
 
 /* Expose. */
