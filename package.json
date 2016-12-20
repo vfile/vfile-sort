@@ -8,8 +8,8 @@
     "sort",
     "message"
   ],
-  "repository": "https://github.com/wooorm/vfile-sort",
-  "bugs": "https://github.com/wooorm/vfile-sort/issues",
+  "repository": "https://github.com/vfile/vfile-sort",
+  "bugs": "https://github.com/vfile/vfile-sort/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"

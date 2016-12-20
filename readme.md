@@ -39,13 +39,13 @@ Sort messages in the given [vfile][].
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/wooorm/vfile-sort.svg
+[travis-badge]: https://img.shields.io/travis/vfile/vfile-sort.svg
 
-[travis]: https://travis-ci.org/wooorm/vfile-sort
+[travis]: https://travis-ci.org/vfile/vfile-sort
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/vfile-sort.svg
+[codecov-badge]: https://img.shields.io/codecov/c/github/vfile/vfile-sort.svg
 
-[codecov]: https://codecov.io/github/wooorm/vfile-sort
+[codecov]: https://codecov.io/github/vfile/vfile-sort
 
 [npm]: https://docs.npmjs.com/cli/install
 
@@ -53,4 +53,4 @@ Sort messages in the given [vfile][].
 
 [author]: http://wooorm.com
 
-[vfile]: https://github.com/wooorm/vfile
+[vfile]: https://github.com/vfile/vfile
