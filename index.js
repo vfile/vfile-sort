@@ -1,20 +1,25 @@
 'use strict';
 
-/* Expose. */
 module.exports = sort;
 
-/* Sort all `file`s messages by line/column. */
+var severities = {
+  true: 2,
+  false: 1,
+  null: 0,
+  undefined: 0
+};
+
 function sort(file) {
   file.messages.sort(comparator);
   return file;
 }
 
-/* Comparator. */
 function comparator(a, b) {
-  return check(a, b, 'line') || check(a, b, 'column') || -1;
+  var left = severities[a.fatal];
+  var right = severities[b.fatal];
+  return check(a, b, 'line') || check(a, b, 'column') || right - left || -1;
 }
 
-/* Compare a single property. */
 function check(a, b, property) {
   return (a[property] || 0) - (b[property] || 0);
 }

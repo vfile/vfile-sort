@@ -30,5 +30,23 @@ test('sort()', function (t) {
     ]
   );
 
+  file = vfile();
+
+  file.info('One', {line: 2, column: 5});
+  file.message('Two', {line: 2, column: 5});
+
+  try {
+    file.fail('Three', {line: 2, column: 5});
+  } catch (err) {}
+
+  t.deepEqual(
+    sort(file).messages.map(String),
+    [
+      '2:5: Three',
+      '2:5: Two',
+      '2:5: One'
+    ]
+  );
+
   t.end();
 });
