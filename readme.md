@@ -13,18 +13,18 @@ npm install vfile-sort
 ## Usage
 
 ```js
-var vfile = require('vfile');
-var sort = require('vfile-sort');
+var vfile = require('vfile')
+var sort = require('vfile-sort')
 
-var file = vfile();
+var file = vfile()
 
-file.message('Error!', {line: 3, column: 1});
-file.message('Another!', {line: 2, column: 2});
+file.message('Error!', {line: 3, column: 1})
+file.message('Another!', {line: 2, column: 2})
 
-sort(file);
+sort(file)
 
-console.log(file.messages.map(String));
-//=> ['2:2: Another!', '3:1: Error!']
+console.log(file.messages.map(String))
+// => ['2:2: Another!', '3:1: Error!']
 ```
 
 ## API
