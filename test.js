@@ -2,7 +2,7 @@
 
 var test = require('tape');
 var vfile = require('vfile');
-var sort = require('./');
+var sort = require('.');
 
 test('sort()', function (t) {
   var file = vfile();
