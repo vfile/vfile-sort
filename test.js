@@ -34,7 +34,7 @@ test('sort()', function(t) {
 
   try {
     file.fail('Three', {line: 2, column: 5})
-  } catch (err) {}
+  } catch (error) {}
 
   t.deepEqual(sort(file).messages.map(String), [
     '2:5: Three',
