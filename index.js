@@ -15,9 +15,12 @@ function sort(file) {
 }
 
 function comparator(a, b) {
-  var left = severities[a.fatal]
-  var right = severities[b.fatal]
-  return check(a, b, 'line') || check(a, b, 'column') || right - left || -1
+  return (
+    check(a, b, 'line') ||
+    check(a, b, 'column') ||
+    severities[b.fatal] - severities[a.fatal] ||
+    0
+  )
 }
 
 function check(a, b, property) {
