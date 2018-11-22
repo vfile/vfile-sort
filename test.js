@@ -15,11 +15,13 @@ test('sort()', function(t) {
   file.message('Delta', {line: 0, column: 1})
   file.message('Echo', {column: 1})
   file.message('Golf', {line: 0})
+  file.message('Golf', {line: 0})
 
   t.deepEqual(sort(file).messages.map(String), [
-    '1:1: Hotel',
     '1:1: Foxtrot',
     '1:1: Golf',
+    '1:1: Golf',
+    '1:1: Hotel',
     '1:1: Delta',
     '1:1: Echo',
     '3:1: Alpha',

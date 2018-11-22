@@ -5,7 +5,13 @@
 [![Downloads][downloads-badge]][downloads]
 [![Chat][chat-badge]][chat]
 
-Sort [vfile][] messages by line/column.
+Sort [vfile][] messages.
+
+*   First sorts by line/column: earlier messages come first
+*   If two messages occurred at the same place, sorts fatal error before
+    warnings, before info messages
+*   Otherwise, uses `localeCompare` to compare `source`, `ruleId`, or finally
+    `reason`
 
 ## Installation
 
