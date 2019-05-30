@@ -3,6 +3,9 @@
 [![Build][build-badge]][build]
 [![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
+[![Sponsors][sponsors-badge]][collective]
+[![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
 Sort [vfile][] messages.
@@ -13,11 +16,11 @@ Sort [vfile][] messages.
 *   Otherwise, uses `localeCompare` to compare `source`, `ruleId`, or finally
     `reason`
 
-## Installation
+## Install
 
 [npm][]:
 
-```bash
+```sh
 npm install vfile-sort
 ```
 
@@ -46,10 +49,13 @@ Sort messages in the given [vfile][].
 
 ## Contribute
 
-See [`contributing.md` in `vfile/vfile`][contributing] for ways to get started.
+See [`contributing.md`][contributing] in [`vfile/.github`][health] for ways to
+get started.
+See [`support.md`][support] for ways to get help.
 
-This organisation has a [Code of Conduct][coc].  By interacting with this
-repository, organisation, or community you agree to abide by its terms.
+This project has a [Code of Conduct][coc].
+By interacting with this repository, organisation, or community you agree to
+abide by its terms.
 
 ## License
 
@@ -69,18 +75,32 @@ repository, organisation, or community you agree to abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/vfile-sort
 
+[size-badge]: https://img.shields.io/bundlephobia/minzip/vfile-sort.svg
+
+[size]: https://bundlephobia.com/result?p=vfile-sort
+
+[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
+
+[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[collective]: https://opencollective.com/unified
+
 [chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/vfile
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[contributing]: https://github.com/vfile/.github/blob/master/contributing.md
+
+[support]: https://github.com/vfile/.github/blob/master/support.md
+
+[health]: https://github.com/vfile/.github
+
+[coc]: https://github.com/vfile/.github/blob/master/code-of-conduct.md
+
 [license]: license
 
 [author]: https://wooorm.com
 
 [vfile]: https://github.com/vfile/vfile
-
-[contributing]: https://github.com/vfile/vfile/blob/master/contributing.md
-
-[coc]: https://github.com/vfile/vfile/blob/master/code-of-conduct.md
