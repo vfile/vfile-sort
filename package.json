@@ -1,11 +1,16 @@
 {
   "name": "vfile-sort",
   "version": "2.2.1",
-  "description": "Sort vfile messages by line/column",
+  "description": "vfile utility to sort messages by line/column",
   "license": "MIT",
   "keywords": [
     "vfile",
+    "util",
+    "utility",
+    "virtual",
+    "file",
     "sort",
+    "order",
     "message"
   ],
   "repository": "vfile/vfile-sort",
