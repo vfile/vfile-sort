@@ -63,9 +63,9 @@ abide by its terms.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/vfile/vfile-sort.svg
+[build-badge]: https://github.com/vfile/vfile-sort/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/vfile/vfile-sort
+[build]: https://github.com/vfile/vfile-sort/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/vfile/vfile-sort.svg
 
