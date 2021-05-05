@@ -18,6 +18,9 @@ Sort [vfile][] messages.
 
 ## Install
 
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
+
 [npm][]:
 
 ```sh
@@ -27,21 +30,24 @@ npm install vfile-sort
 ## Use
 
 ```js
-var vfile = require('vfile')
-var sort = require('vfile-sort')
+import {VFile} from 'vfile'
+import {sort} from 'vfile-sort'
 
-var file = vfile()
+var file = VFile()
 
 file.message('Error!', {line: 3, column: 1})
 file.message('Another!', {line: 2, column: 2})
 
 sort(file)
 
-console.log(file.messages.map(String))
+console.log(file.messages.map(d => String(d)))
 // => ['2:2: Another!', '3:1: Error!']
 ```
 
 ## API
+
+This package exports the following identifiers: `sort`.
+There is no default export.
 
 ### `sort(file)`
 

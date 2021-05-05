@@ -1,8 +1,5 @@
 .DS_Store
 *.log
-.nyc_output/
 coverage/
 node_modules/
-vfile-sort.js
-vfile-sort.min.js
 yarn.lock

@@ -1,11 +1,9 @@
-'use strict'
-
-var test = require('tape')
-var vfile = require('vfile')
-var sort = require('.')
+import test from 'tape'
+import {VFile} from 'vfile'
+import {sort} from './index.js'
 
 test('sort()', function (t) {
-  var file = vfile()
+  var file = new VFile()
 
   file.message('Hotel', {column: 0})
   file.message('Foxtrot')
@@ -32,14 +30,14 @@ test('sort()', function (t) {
     ]
   )
 
-  file = vfile()
+  file = new VFile()
 
   file.info('One', {line: 2, column: 5})
   file.message('Two', {line: 2, column: 5})
 
   try {
     file.fail('Three', {line: 2, column: 5})
-  } catch (_) {}
+  } catch {}
 
   t.deepEqual(
     sort(file).messages.map((d) => String(d)),

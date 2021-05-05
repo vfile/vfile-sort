@@ -1,15 +1,6 @@
-'use strict'
+var severities = {true: 2, false: 1, null: 0, undefined: 0}
 
-module.exports = sort
-
-var severities = {
-  true: 2,
-  false: 1,
-  null: 0,
-  undefined: 0
-}
-
-function sort(file) {
+export function sort(file) {
   file.messages.sort(comparator)
   return file
 }
