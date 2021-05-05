@@ -17,17 +17,20 @@ test('sort()', function (t) {
   file.message('Golf', {line: 0})
   file.message('Golf', {line: 0})
 
-  t.deepEqual(sort(file).messages.map(String), [
-    '1:1: Foxtrot',
-    '1:1: Golf',
-    '1:1: Golf',
-    '1:1: Hotel',
-    '1:1: Delta',
-    '1:1: Echo',
-    '3:1: Alpha',
-    '3:1: Bravo',
-    '3:2: Charlie'
-  ])
+  t.deepEqual(
+    sort(file).messages.map((d) => String(d)),
+    [
+      '1:1: Foxtrot',
+      '1:1: Golf',
+      '1:1: Golf',
+      '1:1: Hotel',
+      '1:1: Delta',
+      '1:1: Echo',
+      '3:1: Alpha',
+      '3:1: Bravo',
+      '3:2: Charlie'
+    ]
+  )
 
   file = vfile()
 
@@ -38,11 +41,10 @@ test('sort()', function (t) {
     file.fail('Three', {line: 2, column: 5})
   } catch (_) {}
 
-  t.deepEqual(sort(file).messages.map(String), [
-    '2:5: Three',
-    '2:5: Two',
-    '2:5: One'
-  ])
+  t.deepEqual(
+    sort(file).messages.map((d) => String(d)),
+    ['2:5: Three', '2:5: Two', '2:5: One']
+  )
 
   t.end()
 })
