@@ -3,12 +3,12 @@
  * @typedef {import('vfile-message').VFileMessage} VFileMessage
  */
 
-var severities = {true: 2, false: 1, null: 0, undefined: 0}
+const severities = {true: 2, false: 1, null: 0, undefined: 0}
 
 /**
- * @template {VFile} F
- * @param {F} file
- * @returns {F}
+ * @template {VFile} File
+ * @param {File} file
+ * @returns {File}
  */
 export function sort(file) {
   file.messages.sort(comparator)
@@ -35,19 +35,19 @@ function comparator(a, b) {
 /**
  * @param {VFileMessage} a
  * @param {VFileMessage} b
- * @param {string} property
+ * @param {string} field
  * @returns {number}
  */
-function check(a, b, property) {
-  return (a[property] || 0) - (b[property] || 0)
+function check(a, b, field) {
+  return (a[field] || 0) - (b[field] || 0)
 }
 
 /**
  * @param {VFileMessage} a
  * @param {VFileMessage} b
- * @param {string} property
+ * @param {string} field
  * @returns {number}
  */
-function compare(a, b, property) {
-  return String(a[property] || '').localeCompare(b[property] || '')
+function compare(a, b, field) {
+  return String(a[field] || '').localeCompare(b[field] || '')
 }

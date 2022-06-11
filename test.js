@@ -3,21 +3,21 @@ import {VFile} from 'vfile'
 import {sort} from './index.js'
 
 test('sort()', function (t) {
-  var file = new VFile()
+  let file = new VFile()
 
-  // @ts-ignore runtime.
+  // @ts-expect-error runtime.
   file.message('Hotel', {column: 0})
   file.message('Foxtrot')
-  // @ts-ignore runtime.
+  // @ts-expect-error runtime.
   file.message('Alpha', {line: 3})
   file.message('Bravo', {line: 3, column: 1})
   file.message('Charlie', {line: 3, column: 2})
   file.message('Delta', {line: 0, column: 1})
-  // @ts-ignore runtime.
+  // @ts-expect-error runtime.
   file.message('Echo', {column: 1})
-  // @ts-ignore runtime.
+  // @ts-expect-error runtime.
   file.message('Golf', {line: 0})
-  // @ts-ignore runtime.
+  // @ts-expect-error runtime.
   file.message('Golf', {line: 0})
 
   t.deepEqual(sort(file).messages.map(String), [
