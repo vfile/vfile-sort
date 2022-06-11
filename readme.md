@@ -8,23 +8,56 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-Sort [vfile][] messages.
+[`vfile`][vfile] utility to sort messages.
 
-*   First sorts by line/column: earlier messages come first
-*   If two messages occurred at the same place, sorts fatal error before
-    warnings, before info messages
-*   Otherwise, uses `localeCompare` to compare `source`, `ruleId`, or finally
-    `reason`
+## Contents
+
+*   [What is this?](#what-is-this)
+*   [When should I use this?](#when-should-i-use-this)
+*   [Install](#install)
+*   [Use](#use)
+*   [API](#api)
+    *   [`sort(file)`](#sortfile)
+*   [Types](#types)
+*   [Compatibility](#compatibility)
+*   [Contribute](#contribute)
+*   [License](#license)
+
+## What is this?
+
+This is a small package to sort the list of messages.
+It first sorts by line/column: earlier messages come first.
+When two messages occurr at the same place, sorts fatal error before warnings,
+before info messages.
+Finally, it sorts using `localeCompare` on `source`, `ruleId`, or finally
+`reason`.
+
+## When should I use this?
+
+You can use this right before a reporter is used to give humans a coherent
+report.
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
-Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
-
-[npm][]:
+This package is [ESM only][esm].
+In Node.js (version 12.20+, 14.14+, 16.0+, or 18.0+), install with [npm][]:
 
 ```sh
 npm install vfile-sort
+```
+
+In Deno with [`esm.sh`][esmsh]:
+
+```js
+import {sort} from 'https://esm.sh/vfile-sort@3'
+```
+
+In browsers with [`esm.sh`][esmsh]:
+
+```html
+<script type="module">
+  import {sort} from 'https://esm.sh/vfile-sort@3?bundle'
+</script>
 ```
 
 ## Use
@@ -33,7 +66,7 @@ npm install vfile-sort
 import {VFile} from 'vfile'
 import {sort} from 'vfile-sort'
 
-var file = VFile()
+const file = VFile()
 
 file.message('Error!', {line: 3, column: 1})
 file.message('Another!', {line: 2, column: 2})
@@ -46,12 +79,24 @@ console.log(file.messages.map(d => String(d)))
 
 ## API
 
-This package exports the following identifiers: `sort`.
+This package exports the identifier `sort`.
 There is no default export.
 
 ### `sort(file)`
 
 Sort messages in the given [vfile][].
+
+## Types
+
+This package is fully typed with [TypeScript][].
+It exports no additional types.
+
+## Compatibility
+
+Projects maintained by the unified collective are compatible with all maintained
+versions of Node.js.
+As of now, that is Node.js 12.20+, 14.14+, 16.0+, and 18.0+.
+Our projects sometimes work with older versions, but this is not guaranteed.
 
 ## Contribute
 
@@ -97,13 +142,19 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[contributing]: https://github.com/vfile/.github/blob/HEAD/contributing.md
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 
-[support]: https://github.com/vfile/.github/blob/HEAD/support.md
+[esmsh]: https://esm.sh
+
+[typescript]: https://www.typescriptlang.org
+
+[contributing]: https://github.com/vfile/.github/blob/main/contributing.md
+
+[support]: https://github.com/vfile/.github/blob/main/support.md
 
 [health]: https://github.com/vfile/.github
 
-[coc]: https://github.com/vfile/.github/blob/HEAD/code-of-conduct.md
+[coc]: https://github.com/vfile/.github/blob/main/code-of-conduct.md
 
 [license]: license
 
