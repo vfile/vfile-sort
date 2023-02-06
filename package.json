@@ -1,6 +1,6 @@
 {
   "name": "vfile-sort",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "vfile utility to sort messages by line/column",
   "license": "MIT",
   "keywords": [
