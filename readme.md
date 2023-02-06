@@ -40,7 +40,7 @@ report.
 ## Install
 
 This package is [ESM only][esm].
-In Node.js (version 12.20+, 14.14+, 16.0+, or 18.0+), install with [npm][]:
+In Node.js (version 14.14+ and 16.0+), install with [npm][]:
 
 ```sh
 npm install vfile-sort
@@ -79,12 +79,21 @@ console.log(file.messages.map(d => String(d)))
 
 ## API
 
-This package exports the identifier `sort`.
+This package exports the identifier [`sort`][api-sort].
 There is no default export.
 
 ### `sort(file)`
 
 Sort messages in the given [vfile][].
+
+###### Parameters
+
+*   `file` ([`VFile`][vfile])
+    — file to sort
+
+###### Returns
+
+Sorted file ([`VFile`][vfile]).
 
 ## Types
 
@@ -95,7 +104,7 @@ It exports no additional types.
 
 Projects maintained by the unified collective are compatible with all maintained
 versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, 16.0+, and 18.0+.
+As of now, that is Node.js 14.14+ and 16.0+.
 Our projects sometimes work with older versions, but this is not guaranteed.
 
 ## Contribute
@@ -161,3 +170,5 @@ abide by its terms.
 [author]: https://wooorm.com
 
 [vfile]: https://github.com/vfile/vfile
+
+[api-sort]: #sortfile
