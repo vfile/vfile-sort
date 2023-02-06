@@ -1,8 +1,9 @@
-import test from 'tape'
+import assert from 'node:assert/strict'
+import test from 'node:test'
 import {VFile} from 'vfile'
 import {sort} from './index.js'
 
-test('sort()', function (t) {
+test('sort', function () {
   let file = new VFile()
 
   // @ts-expect-error runtime.
@@ -20,7 +21,7 @@ test('sort()', function (t) {
   // @ts-expect-error runtime.
   file.message('Golf', {line: 0})
 
-  t.deepEqual(sort(file).messages.map(String), [
+  assert.deepEqual(sort(file).messages.map(String), [
     '1:1: Foxtrot',
     '1:1: Golf',
     '1:1: Golf',
@@ -41,11 +42,9 @@ test('sort()', function (t) {
     file.fail('Three', {line: 2, column: 5})
   } catch {}
 
-  t.deepEqual(sort(file).messages.map(String), [
+  assert.deepEqual(sort(file).messages.map(String), [
     '2:5: Three',
     '2:5: Two',
     '2:5: One'
   ])
-
-  t.end()
 })
