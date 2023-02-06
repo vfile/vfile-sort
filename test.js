@@ -2,8 +2,15 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {VFile} from 'vfile'
 import {sort} from './index.js'
+import * as mod from './index.js'
 
 test('sort', function () {
+  assert.deepEqual(
+    Object.keys(mod).sort(),
+    ['sort'],
+    'should expose the public api'
+  )
+
   let file = new VFile()
 
   // @ts-expect-error runtime.
