@@ -3,6 +3,7 @@
  * @typedef {import('vfile-message').VFileMessage} VFileMessage
  */
 
+/** @type {Record<string, number>} */
 const severities = {true: 2, false: 1, null: 0, undefined: 0}
 
 /**
@@ -24,7 +25,7 @@ function comparator(a, b) {
   return (
     check(a, b, 'line') ||
     check(a, b, 'column') ||
-    severities[b.fatal] - severities[a.fatal] ||
+    severities[String(b.fatal)] - severities[String(a.fatal)] ||
     compare(a, b, 'source') ||
     compare(a, b, 'ruleId') ||
     compare(a, b, 'reason') ||
@@ -35,7 +36,7 @@ function comparator(a, b) {
 /**
  * @param {VFileMessage} a
  * @param {VFileMessage} b
- * @param {string} field
+ * @param {'column' | 'line'} field
  * @returns {number}
  */
 function check(a, b, field) {
@@ -45,7 +46,7 @@ function check(a, b, field) {
 /**
  * @param {VFileMessage} a
  * @param {VFileMessage} b
- * @param {string} field
+ * @param {'reason' | 'ruleId' | 'source'} field
  * @returns {number}
  */
 function compare(a, b, field) {
