@@ -8,7 +8,7 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-[`vfile`][vfile] utility to sort messages.
+[`vfile`][vfile] utility to sort files or messages.
 
 ## Contents
 
@@ -17,7 +17,8 @@
 *   [Install](#install)
 *   [Use](#use)
 *   [API](#api)
-    *   [`sort(file)`](#sortfile)
+    *   [`compareFile(a, b)`](#comparefilea-b)
+    *   [`compareMessage(a, b)`](#comparemessagea-b)
 *   [Types](#types)
 *   [Compatibility](#compatibility)
 *   [Contribute](#contribute)
@@ -25,12 +26,7 @@
 
 ## What is this?
 
-This is a small package to sort the list of messages.
-It first sorts by line/column: earlier messages come first.
-When two messages occurr at the same place, sorts fatal error before warnings,
-before info messages.
-Finally, it sorts using `localeCompare` on `source`, `ruleId`, or finally
-`reason`.
+This package exposes comparators for vfile files and messages.
 
 ## When should I use this?
 
@@ -40,7 +36,7 @@ report.
 ## Install
 
 This package is [ESM only][esm].
-In Node.js (version 14.14+ and 16.0+), install with [npm][]:
+In Node.js (version 16+), install with [npm][]:
 
 ```sh
 npm install vfile-sort
@@ -64,36 +60,71 @@ In browsers with [`esm.sh`][esmsh]:
 
 ```js
 import {VFile} from 'vfile'
-import {sort} from 'vfile-sort'
+import {VFileMessage} from 'vfile-message'
+import {compareFile, compareMessage} from 'vfile-sort'
 
-const file = VFile()
+console.log(
+  [
+    new VFileMessage('Error!', {place: {line: 3, column: 1}}),
+    new VFileMessage('Another!', {place: {line: 2, column: 2}})
+  ]
+    .toSorted(compareMessage)
+    .map(String)
+) //=> ['2:2: Another!', '3:1: Error!']
 
-file.message('Error!', {line: 3, column: 1})
-file.message('Another!', {line: 2, column: 2})
-
-sort(file)
-
-console.log(file.messages.map(d => String(d)))
-// => ['2:2: Another!', '3:1: Error!']
+console.log(
+  [
+    new VFile(new URL(import.meta.url)),
+    new VFile(new URL('.', import.meta.url))
+  ]
+    .toSorted(compareFile)
+    .map((d) => d.path)
+) //=> ['/Users/tilde/Projects/oss/vfile-sort/', '/Users/tilde/Projects/oss/vfile-sort/example.js']
 ```
 
 ## API
 
-This package exports the identifier [`sort`][api-sort].
+This package exports the identifiers [`compareFile`][api-compare-file] and
+[`compareMessage`][api-compare-message].
 There is no default export.
 
-### `sort(file)`
+### `compareFile(a, b)`
 
-Sort messages in the given [vfile][].
+Compare files (since: `4.0.0`).
 
 ###### Parameters
 
-*   `file` ([`VFile`][vfile])
-    — file to sort
+*   `a` ([`VFile`][vfile])
+    — file
+*   `b` ([`VFile`][vfile])
+    — other file
 
 ###### Returns
 
-Sorted file ([`VFile`][vfile]).
+Order (`number`).
+
+### `compareMessage(a, b)`
+
+Compare messages (since: `4.0.0`).
+
+###### Algorithm
+
+It first sorts by line/column: earlier messages come first.
+When two messages occurr at the same place, sorts fatal error before
+warnings, before info messages.
+Finally, it sorts using `localeCompare` on `source`, `ruleId`, or finally
+`reason`.
+
+###### Parameters
+
+*   `a` ([`VFile`][vfile])
+    — message
+*   `b` ([`VFile`][vfile])
+    — other message
+
+###### Returns
+
+Order (`number`).
 
 ## Types
 
@@ -102,10 +133,13 @@ It exports no additional types.
 
 ## Compatibility
 
-Projects maintained by the unified collective are compatible with all maintained
-versions of Node.js.
-As of now, that is Node.js 14.14+ and 16.0+.
-Our projects sometimes work with older versions, but this is not guaranteed.
+Projects maintained by the unified collective are compatible with maintained
+versions of Node.js (as of June 2023, that is Node.js 16+).
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line, `vfile-sort@^3`,
+compatible with Node.js 12.
 
 ## Contribute
 
@@ -135,9 +169,9 @@ abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/vfile-sort
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/vfile-sort.svg
+[size-badge]: https://img.shields.io/badge/dynamic/json?label=minzipped%20size&query=$.size.compressedSize&url=https://deno.bundlejs.com/?q=vfile-sort
 
-[size]: https://bundlephobia.com/result?p=vfile-sort
+[size]: https://bundlejs.com/?q=vfile-sort
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -171,4 +205,6 @@ abide by its terms.
 
 [vfile]: https://github.com/vfile/vfile
 
-[api-sort]: #sortfile
+[api-compare-file]: #comparefilea-b
+
+[api-compare-message]: #comparemessagea-b
