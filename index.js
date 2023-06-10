@@ -1,1 +1,1 @@
-export {compareMessage} from './lib/index.js'
+export {compareFile, compareMessage} from './lib/index.js'

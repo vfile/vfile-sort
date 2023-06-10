@@ -34,6 +34,7 @@
     "index.js"
   ],
   "dependencies": {
+    "vfile": "^6.0.0",
     "vfile-message": "^4.0.0"
   },
   "devDependencies": {
@@ -44,7 +45,6 @@
     "remark-preset-wooorm": "^9.0.0",
     "type-coverage": "^2.0.0",
     "typescript": "^5.0.0",
-    "vfile": "^6.0.0",
     "xo": "^0.54.0"
   },
   "scripts": {
