@@ -1,1 +1,1 @@
-export {sort} from './lib/index.js'
+export {compareMessage} from './lib/index.js'

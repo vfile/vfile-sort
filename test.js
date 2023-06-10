@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {VFile} from 'vfile'
-import {sort} from './index.js'
+import {compareMessage} from './index.js'
 
 test('sort', async function () {
   assert.deepEqual(
     Object.keys(await import('./index.js')).sort(),
-    ['sort'],
+    ['compareMessage'],
     'should expose the public api'
   )
 
@@ -23,7 +23,7 @@ test('sort', async function () {
   file.message('Golf', {line: 0, column: 0})
 
   assert.deepEqual(
-    sort(file).messages.map(String),
+    file.messages.sort(compareMessage).map(String),
     [
       '1:1: Foxtrot',
       '1:1: Golf',
@@ -48,7 +48,7 @@ test('sort', async function () {
   } catch {}
 
   assert.deepEqual(
-    sort(file).messages.map(String),
+    file.messages.sort(compareMessage).map(String),
     ['2:5: Three', '2:5: Two', '2:5: One'],
     'should compare on `fatal`'
   )
