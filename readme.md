@@ -134,12 +134,12 @@ It exports no additional types.
 ## Compatibility
 
 Projects maintained by the unified collective are compatible with maintained
-versions of Node.js (as of June 2023, that is Node.js 16+).
+versions of Node.js.
 
 When we cut a new major release, we drop support for unmaintained versions of
 Node.
-This means we try to keep the current release line, `vfile-sort@^3`,
-compatible with Node.js 12.
+This means we try to keep the current release line, `vfile-sort@^4`,
+compatible with Node.js 16.
 
 ## Contribute
 
