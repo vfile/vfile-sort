@@ -3,11 +3,11 @@ import test from 'node:test'
 import {fileURLToPath} from 'node:url'
 import {VFile} from 'vfile'
 import {VFileMessage} from 'vfile-message'
-import {compareFile, compareMessage} from './index.js'
+import {compareFile, compareMessage} from 'vfile-sort'
 
 test('core', async function () {
   assert.deepEqual(
-    Object.keys(await import('./index.js')).sort(),
+    Object.keys(await import('vfile-sort')).sort(),
     ['compareFile', 'compareMessage'],
     'should expose the public api'
   )
