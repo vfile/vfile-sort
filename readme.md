@@ -45,14 +45,14 @@ npm install vfile-sort
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import {sort} from 'https://esm.sh/vfile-sort@3'
+import {sort} from 'https://esm.sh/vfile-sort@4'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import {sort} from 'https://esm.sh/vfile-sort@3?bundle'
+  import {sort} from 'https://esm.sh/vfile-sort@4?bundle'
 </script>
 ```
 
